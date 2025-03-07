@@ -14,6 +14,13 @@ dotEnv.config();
 const port = process.env.PORT;
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 app.use("/products", product);
 app.use("/cart", cart);
 app.use(user);
